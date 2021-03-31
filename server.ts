@@ -27,7 +27,7 @@ const client = new Client(dbConfig);
 client.connect();
 
 app.get("/dogs", async (req, res) => {
-  const dogs = await client.query('select * from dogs_table');
+  const dogs = await client.query('SELECT dog, COUNT(*) FROM dogs_table GROUP BY dog ORDER BY COUNT(*) DESC');
   res.json(dogs.rows);
 });
 
