@@ -27,8 +27,8 @@ const client = new Client(dbConfig);
 client.connect();
 
 app.get("/", async (req, res) => {
-  const dbres = await client.query('select * from categories');
-  res.json(dbres.rows);
+  const dogs = await client.query('select * from dogs_table');
+  res.json(dogs.rows);
 });
 
 
