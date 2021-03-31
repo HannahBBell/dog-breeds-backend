@@ -33,7 +33,7 @@ app.get("/dogs", async (req, res) => {
 
 app.post("/dogs", async (req, res) => {
   const {dogs} = req.body;
-  const newVote = await client.query('INSERT INTO dogs_table (dogs) VALUES ($1) RETURNING *', [dogs]);
+  const newVote = await client.query('INSERT INTO dogs_table (dog) VALUES ($1) RETURNING *', [dogs]);
   res.json(newVote.rows[0])
 });
 
