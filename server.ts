@@ -38,5 +38,5 @@ if (!port) {
   throw 'Missing PORT environment variable.  Set it in .env file.';
 }
 app.listen(port, () => {
-  console.log(`Server is up and running on port ${port}`);
+  console.log(`DOG voting server is up and running on port ${port}`);
 });
