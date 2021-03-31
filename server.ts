@@ -26,7 +26,7 @@ app.use(cors()) //add CORS support to each following route handler
 const client = new Client(dbConfig);
 client.connect();
 
-app.get("/dogs", async (req, res) => {
+app.get("/", async (req, res) => {
   const dogs = await client.query('SELECT dog, COUNT(*) FROM dogs_table GROUP BY dog ORDER BY COUNT(*) DESC');
   res.json(dogs.rows);
 });
