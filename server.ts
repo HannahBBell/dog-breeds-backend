@@ -27,12 +27,12 @@ const client = new Client(dbConfig);
 client.connect();
 
 app.get("/dogs", async (req, res) => {
-  const dogs = await client.query('SELECT dog, COUNT(*) FROM dogs_table GROUP BY dog ORDER BY COUNT(*) DESC LIMIT 3');
+  const dogs = await client.query('SELECT dog, COUNT(*) FROM dogs_table GROUP BY dog ORDER BY COUNT(*) DESC LIMIT 10');
   res.json(dogs.rows);
 });
 
 app.get("/dogshour", async (req, res) => {
-   const dogs = await client.query('SELECT dog, COUNT(*) FROM dogs_table WHERE vote_time BETWEEN NOW() - INTERVAL `20 MINUTES` AND NOW() GROUP BY dog ORDER BY COUNT(*) DESC');
+   const dogs = await client.query("SELECT dog, COUNT(*) FROM dogs_table WHERE vote_time BETWEEN NOW() - INTERVAL '30 MINUTES' AND NOW() GROUP BY dog ORDER BY COUNT(*) DESC LIMIT 10");
    res.json(dogs.rows);
  });
 
